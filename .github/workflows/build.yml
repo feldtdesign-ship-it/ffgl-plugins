@@ -1,0 +1,43 @@
+name: Build FFGL Plugins
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build Mac bundles
+        run: |
+          cmake -S . -B build-mac -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-mac --config Release
+
+      - name: Upload Mac bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-bundles
+          path: build-mac/*.bundle
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build Windows DLLs
+        run: |
+          cmake -S . -B build-win -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-win --config Release
+
+      - name: Upload Windows DLLs
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-dlls
+          path: build-win/Release/*.dll
