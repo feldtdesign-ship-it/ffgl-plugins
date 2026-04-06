@@ -14,29 +14,7 @@ include_directories(
 )
 
 set(FFGL_SOURCES
-    ${FFGL_LIB}/ffgl/FFGL.cpp
-    ${FFGL_LIB}/ffgl/FFGLPluginInfo.cpp
-    ${FFGL_LIB}/ffgl/FFGLPluginInfoData.cpp
-    ${FFGL_LIB}/ffgl/FFGLPluginManager.cpp
-    ${FFGL_LIB}/ffgl/FFGLPluginSDK.cpp
-    ${FFGL_LIB}/ffgl/FFGLLog.cpp
-    ${FFGL_LIB}/ffgl/FFGLThumbnailInfo.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLPlugin.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLSource.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLEffect.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLMixer.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParam.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamRange.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamBool.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamOption.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamEvent.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamTrigger.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamText.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLParamFFT.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLAudio.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLRandom.cpp
-    ${FFGL_LIB}/ffglquickstart/FFGLSmoothValue.cpp
-    ${FFGL_ROOT}/source/lib/FFGLSDK.cpp
+    ${FFGL_LIB}/FFGLSDK.cpp
 )
 
 macro(add_ffgl_plugin NAME SOURCE)
