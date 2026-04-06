@@ -38,6 +38,17 @@ set(FFGL_SOURCES
     ${FFGL_LIB}/ffglquickstart/FFGLRandom.cpp
     ${FFGL_LIB}/ffglquickstart/FFGLSmoothValue.cpp
     ${FFGL_LIB}/ffglquickstart/FFGLSource.cpp
+    ${FFGL_LIB}/ffglex/FFGLFBO.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedBufferBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedFBOBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedRenderBufferBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedSamplerActivation.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedShaderBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedTextureBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScopedVAOBinding.cpp
+    ${FFGL_LIB}/ffglex/FFGLScreenQuad.cpp
+    ${FFGL_LIB}/ffglex/FFGLShader.cpp
+    ${FFGL_LIB}/ffglex/FFGLUtilities.cpp
 )
 
 macro(add_ffgl_plugin NAME SOURCE)
