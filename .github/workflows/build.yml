@@ -15,18 +15,14 @@ jobs:
 
       - name: Build Mac bundles
         run: |
-          xcodebuild -project ffgl/build/osx/FFGLPlugins.xcodeproj \
-            -target ChromaticDots -configuration Release \
-            SYMROOT=$PWD/build-mac
-          xcodebuild -project ffgl/build/osx/FFGLPlugins.xcodeproj \
-            -target Ouchi -configuration Release \
-            SYMROOT=$PWD/build-mac
+          cmake -S . -B build-mac -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-mac --config Release
 
       - name: Upload Mac bundles
         uses: actions/upload-artifact@v4
         with:
           name: mac-bundles
-          path: build-mac/Release/*.bundle
+          path: build-mac/*.bundle
 
   build-windows:
     runs-on: windows-latest
@@ -35,20 +31,13 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-
       - name: Build Windows DLLs
         run: |
-          msbuild ffgl/build/windows/FFGLPlugins.sln `
-            /p:Configuration=Release `
-            /p:Platform=x64 `
-            /p:AdditionalIncludeDirectories="$PWD\ffgl\deps\glew-2.1.0\include" `
-            /p:AdditionalLibraryDirectories="$PWD\ffgl\deps\glew-2.1.0\lib\Release\x64" `
-            /t:ChromaticDots,Ouchi
+          cmake -S . -B build-win -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-win --config Release
 
       - name: Upload Windows DLLs
         uses: actions/upload-artifact@v4
         with:
           name: windows-dlls
-          path: ffgl/binaries/x64/Release/*.dll
+          path: build-win/Release/*.dll
